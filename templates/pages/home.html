@@ -1,8 +1,10 @@
 {% extends "_base.html" %}
+{% load common_tags %}
 
 {% block title %}Hello There!{% endblock%}
 {% block header %}Hello There!{% endblock%}
 {% block main %}
   <h1>Welcome to the Home Page</h1>
   <p>Thank you for visiting our site!</p>
+{% random_joke %}
 {% endblock %}
