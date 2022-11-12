@@ -5,6 +5,7 @@ urlpatterns = [
     # admin/doc/ must come before admin/
     path('admin/doc/', include('django.contrib.admindocs.urls')),
     path('admin/', admin.site.urls),
-    path('jokes', include('jokes.urls')),
+    path('jobs/', include('jobs.urls')),
+    path('jokes/', include('jokes.urls')),
     path('', include('pages.urls')),
 ]
