@@ -1,4 +1,4 @@
-
+from datetime import datetime
 from django import forms
 
 class JobApplicationForm(forms.Form):
@@ -17,20 +17,39 @@ class JobApplicationForm(forms.Form):
         (5, 'FRI')
     )
 
-    first_name = forms.CharField()
+    YEARS = range(datetime.now().year, datetime.now().year+2)
+
+    first_name = forms.CharField(
+        widget=forms.URLInput(attrs={'autofocus':True})
+    )
     last_name = forms.CharField()
     email = forms.EmailField()
-    website = forms.URLField(required=False)
+    website = forms.URLField(
+        required=False,
+        widget=forms.URLInput(
+            attrs={'placeholder':'https://www.example.com', 'size':'30'}
+        )
+    )
     employment_type = forms.ChoiceField(choices=EMPLOYMENT_TYPES)
     start_date = forms.DateField(
-        help_text='The earliest date you can start working.'
+        help_text='The earliest date you can start working.',
+        widget=forms.SelectDateWidget(
+            years=YEARS,
+        )
     )
     available_days = forms.MultipleChoiceField(
         choices=DAYS,
+        widget=forms.CheckboxSelectMultiple(attrs={"checked":True}),
         help_text='Select all days that you can work.'
     )
-    desired_hourly_wage = forms.DecimalField()
-    cover_letter = forms.CharField()
+    desired_hourly_wage = forms.DecimalField(
+        widget=forms.NumberInput(
+            attrs={'min':'10.00', 'max':'100.00', 'step':'.25'}
+        )
+    )
+    cover_letter = forms.CharField(
+        widget=forms.Textarea(attrs={'cols': '50', 'rows': '5'})
+    )
     confirmation = forms.BooleanField(
         label='I certify that the information I have provided is true.'
     )
