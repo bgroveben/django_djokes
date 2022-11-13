@@ -17,3 +17,14 @@ h2 {
 h1,p {
   text-align: center;
 }
+
+/* FORM STYLES */
+label {
+  font-variant: small-caps;
+}
+
+.form-check {
+  display: inline-block;
+  font-weight: normal;
+  margin: 0 1rem;
+}
