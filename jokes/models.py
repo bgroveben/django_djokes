@@ -72,3 +72,6 @@ class Tag(models.Model):
 
     def __str__(self):
         return self.tag
+
+    class Meta:
+        ordering = ['tag']
