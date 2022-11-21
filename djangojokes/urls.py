@@ -3,6 +3,9 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 
+import private_storage.urls
+
+
 urlpatterns = [
     # Admin
     path('admin/doc/', include('django.contrib.admindocs.urls')),
@@ -11,6 +14,9 @@ urlpatterns = [
     # User Management
     path('account/', include('users.urls')),
     path('account/', include('allauth.urls')),
+
+    # Private media
+    path('media/private/', include(private_storage.urls)),
 
     # Local Apps
     path('jobs/', include('jobs.urls')),
