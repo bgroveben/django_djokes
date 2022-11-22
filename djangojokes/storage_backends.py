@@ -1,5 +1,7 @@
 from storages.backends.s3boto3 import S3Boto3Storage
 
+# https://aws.amazon.com/articles/amazon-s3-bucket-public-access-considerations/
+
 class StaticStorage(S3Boto3Storage):
     """ Class for storing static files. """
     location = 'static'

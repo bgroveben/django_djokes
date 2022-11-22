@@ -3,7 +3,7 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 
-import private_storage.urls
+# import private_storage.urls
 
 
 urlpatterns = [
@@ -16,7 +16,7 @@ urlpatterns = [
     path('account/', include('allauth.urls')),
 
     # Private media
-    path('media/private/', include(private_storage.urls)),
+    # path('media/private/', include(private_storage.urls)),
 
     # Local Apps
     path('jobs/', include('jobs.urls')),

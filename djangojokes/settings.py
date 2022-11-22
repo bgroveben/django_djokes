@@ -46,7 +46,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    'private_storage',
+    # 'private_storage',
 
     # Local apps
     'common.apps.CommonConfig',
@@ -178,6 +178,7 @@ AWS_STORAGE_BUCKET_NAME = 'djangojokes'
 AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
 AWS_S3_SIGNATURE_VERSION = 's3v4'
 AWS_DEFAULT_ACL = None # Use S3 bucket's setting
+AWS_S3_REGION_NAME = 'us-west-1'
 
 AWS_S3_OBJECT_PARAMETERS = {
     'CacheControl': 'max-age=86400',
