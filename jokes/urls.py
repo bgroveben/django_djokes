@@ -2,7 +2,7 @@ from django.urls import path
 
 from .views import (
     JokeCreateView, JokeDeleteView, JokeDetailView,
-    JokeListView, JokeUpdateView
+    JokeListView, JokeUpdateView, vote
 )
 
 app_name = 'jokes'
