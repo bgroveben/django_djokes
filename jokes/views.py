@@ -110,7 +110,7 @@ class JokeListView(ListView):
             qs = qs.filter(user__username=username)
         # If neither 'slug' nor 'username' show up in self.kwargs then you
         # leave the default query as is and it will return all the jokes.
-        return qs.order_by(ordering)
+        return qs.prefetch_related('category', 'user').order_by(ordering)
 
 
 class JokeUpdateView(SuccessMessageMixin, UserPassesTestMixin, UpdateView):
