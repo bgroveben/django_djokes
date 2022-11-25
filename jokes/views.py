@@ -75,9 +75,6 @@ class JokeListView(ListView):
         return (order_fields, order_key, direction)
 
     def get_order_fields(self):
-        """
-        Returns a dict mapping friendly names to field names and lookups.
-        """
         return {
             'joke': 'question',
             'category': 'category__category',
@@ -86,6 +83,27 @@ class JokeListView(ListView):
             'updated': 'updated',
             'default_key': 'updated'
         }
+
+    def get_queryset(self):
+        ordering = self.get_ordering()
+        qs = Joke.objects.all() # get unfiltered queryset
+
+        if 'slug' in self.kwargs: # Filter by category or tag
+            slug = self.kwargs['slug']
+            if '/category' in self.request.path_info:
+                # path('category/<slug>/', JokeListView.as_view(),
+                # name='category'),
+                qs = qs.filter(category__slug=slug)
+            if '/tag' in self.request.path_info:
+                # path('tag/<slug>/', JokeListView.as_view(), name='tag'),
+                qs = qs.filter(tags__slug=slug)
+        elif 'username' in self.kwargs: # Filter by joke creator
+            username = self.kwargs['username']
+            # path('creator/<username>/', JokeListView.as_view(), name='creator')
+            qs = qs.filter(user__username=username)
+        # If neither 'slug' nor 'username' show up in self.kwargs then you
+        # leave the default query as is and it will return all the jokes.
+        return qs.order_by(ordering)
 
 
 class JokeUpdateView(SuccessMessageMixin, UserPassesTestMixin, UpdateView):
