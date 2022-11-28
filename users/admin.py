@@ -29,7 +29,6 @@ class CustomUserAdmin(DjangoJokesAdmin, UserAdmin):
     # Remove password field.
     remove_fields(UserAdmin.fieldsets, None, ('password',))
     append_fields(UserAdmin.fieldsets, None, ('password_form',))
-
     # Fields for adding new user.
     new_fields = ('email', )
     # Add new fields to unlabelled fieldset.
