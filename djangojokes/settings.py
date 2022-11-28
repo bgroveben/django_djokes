@@ -100,6 +100,7 @@ WSGI_APPLICATION = 'djangojokes.wsgi.application'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 import dj_database_url
 DATABASES = { 'default' : dj_database_url.config()}
+# DATABASE_URL = { 'default' : dj_database_url.config()}
 
 # EMAIL
 SENDGRID_API_KEY = os.environ.get('SENDGRID_API_KEY')
