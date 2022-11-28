@@ -23,3 +23,7 @@ class CustomUser(AbstractUser):
 
     def get_absolute_url(self):
         return reverse('my-account')
+
+    def __str__(self):
+        # Used to populate the user dropdown in the joke form
+        return f'{self.first_name} {self.last_name} ({self.username})'
